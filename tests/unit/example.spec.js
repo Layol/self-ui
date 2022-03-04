@@ -1,12 +1,16 @@
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Task from "@/components/Task.vue";
 
-describe("HelloWorld.vue", () => {
+describe("Task.vue", () => {
   it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+    const task = {
+        id: '1',
+        title: 'Test Task',
+        state: 'TASK_INBOX',
+    };
+    const wrapper = shallowMount(Task, {
+      propsData: { task }
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.find('div').classes()).toContain('TASK_INBOX');
   });
 });
